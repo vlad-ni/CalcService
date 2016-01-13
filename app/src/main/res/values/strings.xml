@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CalcService</string>
+    <string name="DIV_ERROR">Error: division by zero!</string>
+</resources>
