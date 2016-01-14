@@ -14,11 +14,11 @@ public class CalcService extends BroadcastReceiver {
         if (isOrderedBroadcast()) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                Integer firstNumber = extras.getInt("firstNumber");
-                Integer secondNumber = extras.getInt("secondNumber");
+                Long firstNumber = extras.getLong("firstNumber");
+                Long secondNumber = extras.getLong("secondNumber");
                 String operation = extras.getString("operation");
 
-                Pair<Integer, String> result = calculate(firstNumber, secondNumber, operation, context);
+                Pair<Long, String> result = calculate(firstNumber, secondNumber, operation, context);
 
                 Bundle msg = new Bundle();
                 msg.putString("Message", result.second);
@@ -28,8 +28,8 @@ public class CalcService extends BroadcastReceiver {
         }
     }
 
-    public Pair<Integer, String> calculate(Integer firstNumber, Integer secondNumber, String operation, Context context) {
-        Integer calc = 0;
+    public Pair<Long, String> calculate(Long firstNumber, Long secondNumber, String operation, Context context) {
+        Long calc = 0L;
         String message = "";
 
         switch (operation) {
@@ -44,7 +44,7 @@ public class CalcService extends BroadcastReceiver {
                 break;
             case "/":
                 if (secondNumber == 0) {
-                    message = context.getResources().getString(R.string.DIV_ERROR);;
+                    message = context.getResources().getString(R.string.DIV_ERROR);
                 } else {
                     calc = firstNumber / secondNumber;
                 }
